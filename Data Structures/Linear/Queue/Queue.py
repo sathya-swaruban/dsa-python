@@ -28,11 +28,19 @@ class Queue:
 
     def display(self):
         for index in range(self.__front, self.__rear + 1):
-            print(self.__elements[index])
+            print(self.__elements[index], end='<-')
 
     def get_max_size(self):
         return self.__max_size
 
 
 if __name__ == '__main__':
-    pass
+    queue = Queue(5)
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    queue.enqueue(4)
+    queue.enqueue(5)
+    print(queue.dequeue())
+    print(queue.dequeue())
+    queue.display()
