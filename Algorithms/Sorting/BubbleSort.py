@@ -2,10 +2,9 @@
 # Time Complexity: O(n^2)
 # Space Complexity: O(1)
 def bubble_sort(numbers):
-    length = len(numbers)
-    for i in range(length - 1):
+    for i in range(len(numbers) - 1):
         is_swapped = False
-        for j in range(length - i - 1):
+        for j in range(len(numbers) - i - 1):
             if numbers[j] > numbers[j + 1]:
                 numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
                 is_swapped = True
