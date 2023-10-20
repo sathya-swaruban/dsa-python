@@ -1,3 +1,6 @@
+# Merge Sort
+# Time Complexity: O(n log n)
+# Space Complexity: O(n)
 def merge(left_list, right_list):
     i, j = 0, 0
     sorted = list()
