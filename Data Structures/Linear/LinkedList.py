@@ -27,11 +27,9 @@ class LinkedList:
     def get_tail(self):
         return self.__tail
 
-    # This method is added for this tryout alone
     def set_head(self, new_node):
         self.__head = new_node
 
-    # This method is added for this tryout alone
     def set_tail(self, new_node):
         self.__tail = new_node
 
