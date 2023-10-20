@@ -94,16 +94,6 @@ class LinkedList:
         else:
             print(data, "is not present in Linked list")
 
-    def __str__(self):
-        temp = self.__head
-        msg = list()
-        while temp is not None:
-            msg.append(str(temp.get_data()))
-            temp = temp.get_next()
-        msg = " ".join(msg)
-        msg = "Linkedlist data(Head to Tail): " + msg
-        return msg
-
 
 if __name__ == '__main__':
     linked_list = LinkedList()
@@ -117,4 +107,4 @@ if __name__ == '__main__':
     linked_list.display()
     linked_list.delete(60)
     linked_list.delete(70)
-    print(linked_list)
+    linked_list.display()
