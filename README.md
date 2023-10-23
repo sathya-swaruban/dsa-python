@@ -1,15 +1,16 @@
 # dsa-python
-
 ## Contents
 ### Data Structures
-1. Array
-2. Linked List
-3. Stack
-4. Queue
-5. Hash Table
-6. Tree
-7. Heap
-8. Graph
+1. Linear: <br>
+  a. Array <br>
+  b. Linked List <br>
+  c. Stack <br>
+  d. Queue
+2. Non-Linear: <br>
+  a. Hash Table <br>
+  b. Tree <br>
+  c. Heap <br>
+  d. Graph
 
 ### Algorithms
 1. Searching Algorithms: <br>
@@ -24,9 +25,10 @@
   f. Cycle Sort
 
 ### Algorithm Technique
-1. Brute-Force
-2. Greedy Approach
-3. Dynamic Programming
+1. Brute Force
+2. Divide and Conquer
+3. Greedy Algorithms
+4. Dynamic Programming
 
 ### Analysis of Algorithms
 1. Big O Notation
