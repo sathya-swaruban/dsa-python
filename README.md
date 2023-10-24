@@ -34,4 +34,5 @@
 1. Big O Notation
 
 ## Resources
-1. https://www.bigocheatsheet.com/
+1. https://pythontutor.com/python-compiler.html#mode=edit
+2. https://www.bigocheatsheet.com/
