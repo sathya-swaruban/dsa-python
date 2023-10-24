@@ -34,5 +34,6 @@
 1. Big O Notation
 
 ## Resources
-1. https://pythontutor.com/python-compiler.html#mode=edit
-2. https://www.bigocheatsheet.com/
+1. [CS50's Introduction to Programming with Python - [YouTube Playlist]](https://www.youtube.com/playlist?list=PLhQjrBD2T3817j24-GogXmWqO5Q5vYy0V)
+2. [Online Python compiler, visual debugger, and AI tutor](https://pythontutor.com/python-compiler.html#mode=edit)
+3. [Know Thy Complexities!](https://www.bigocheatsheet.com/)
