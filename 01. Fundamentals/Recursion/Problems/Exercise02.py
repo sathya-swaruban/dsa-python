@@ -1,7 +1,7 @@
 """
 Exercise-02:
-   Write a function that takes in a base and an exp and recursively computes base^exp.
-   Note: You are not allowed to use the ** operator!
+    Write a function that takes in a base and an exp and recursively computes base^exp.
+    NOTE: You are not allowed to use the ** operator!
 """
 
 
@@ -14,6 +14,4 @@ def rec_expo(base, exp):
 
 # Tests
 if __name__ == '__main__':
-    print(rec_expo(0, 5))
-    print(rec_expo(2, 4))
-    print(rec_expo(3, 0))
+    print(rec_expo(2, 3))

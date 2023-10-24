@@ -1,6 +1,6 @@
 """
 Exercise-01:
-   Write a function that takes in two non-negative numbers and recursively multiplies them together.
+    Write a function that takes in two non-negative numbers and recursively multiplies them together.
 """
 
 
@@ -15,6 +15,4 @@ def rec_mult(num_1, num_2):
 
 # Tests
 if __name__ == '__main__':
-    print(rec_mult(0, 5))
-    print(rec_mult(5, 4))
-    print(rec_mult(3, 0))
+    print(rec_mult(5, 40))
