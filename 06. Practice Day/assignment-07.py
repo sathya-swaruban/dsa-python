@@ -1,4 +1,4 @@
-# lex_auth_0127716999111884801080
+# lex_auth_0127717096857518081088
 
 # Linked List Implementation
 class Node:
@@ -98,6 +98,61 @@ class LinkedList:
             print(data, "is not present in Linked list")
 
 
+# Queue Implementation
+class Queue:
+    def __init__(self, max_size):
+        self.__max_size = max_size
+        self.__elements = [None] * self.__max_size
+        self.__rear = -1
+        self.__front = 0
+
+    def is_full(self):
+        return self.__rear == self.__max_size - 1
+
+    def is_empty(self):
+        return self.__front > self.__rear
+
+    def enqueue(self, data):
+        if self.is_full():
+            print("Queue is full!")
+        else:
+            self.__rear += 1
+            self.__elements[self.__rear] = data
+
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty!")
+        else:
+            data = self.__elements[self.__front]
+            self.__front += 1
+            return data
+
+    def display(self):
+        for index in range(self.__front, self.__rear + 1):
+            print(self.__elements[index], end='<-')
+
+    def get_max_size(self):
+        return self.__max_size
+
+
+class Goods:
+    def __init__(self, product, quantity):
+        self.__product = product
+        self.__quantity = quantity
+
+    def get_product(self):
+        return self.__product
+
+    def get_quantity(self):
+        return self.__quantity
+
+    def __str__(self):
+        return '{}: {}'.format(
+            self.__product,
+            self.__quantity
+        )
+
+
 class Compartment:
     def __init__(self, name, no_of_passengers, no_of_goods):
         self.__name = name
@@ -150,16 +205,28 @@ class Train:
 
     def add_passenger_compartments(self, no_of_passengers):
         serial_number = 0
-        total_capacity = self.__passenger_capacity_per_compartment
+        passenger_capacity = self.__passenger_capacity_per_compartment
         while no_of_passengers > 0:
-            passenger_count = total_capacity
-            if no_of_passengers < total_capacity:
-                passenger_count = no_of_passengers % total_capacity
+            passenger_count = passenger_capacity
+            if no_of_passengers < passenger_capacity:
+                passenger_count = no_of_passengers % passenger_capacity
             compartment_name = self.__train_name[0] + str(serial_number)
             compartment = Compartment(compartment_name, passenger_count, 0)
             self.__compartment_list.add(compartment)
-            no_of_passengers -= total_capacity
+            no_of_passengers -= passenger_capacity
             serial_number += 1
+
+    def add_goods(self, goods_list):
+        no_of_goods = 0
+        while not goods_list.is_empty():
+            no_of_goods += goods_list.dequeue().get_quantity()
+        while no_of_goods > 0:
+            tail_compartment = self.__compartment_list.get_tail().get_data()
+            passenger_available = tail_compartment.get_no_of_passengers()
+            goods_available = tail_compartment.get_no_of_goods()
+            remaining_space = (passenger_available // self.__passenger_goods_ratio) - goods_available
+            # TODO: check if we can accommodate any goods in the tail compartment
+            pass
 
     def __str__(self):
         return ('Train {} travels from {} to {} with a capacity of {} passenger per compartment and the passenger to '
@@ -173,11 +240,4 @@ class Train:
 
 
 if __name__ == '__main__':
-    train1 = Train('Lokmanya', 'Bangalore', 'Mumbai', 60, 5)
-    train2 = Train('Rajdhani', 'Mumbai', 'Chandigarh', 75, 5)
-    train1.add_passenger_compartments(230)
-    train2.add_passenger_compartments(150)
-    train1_compartments = train1.get_compartment_list()
-    train2_compartments = train2.get_compartment_list()
-    train1_compartments.display()
-    train2_compartments.display()
+    pass
