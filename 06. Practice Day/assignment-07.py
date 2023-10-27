@@ -65,7 +65,7 @@ class LinkedList:
     def display(self):
         temp = self.__head
         while temp is not None:
-            print(temp.get_data(), '->', end=' ')
+            print(temp.get_data(), end='\n')
             temp = temp.get_next()
         print()
 
@@ -168,6 +168,9 @@ class Compartment:
     def get_no_of_goods(self):
         return self.__no_of_goods
 
+    def set_no_of_goods(self, no_of_goods):
+        self.__no_of_goods += no_of_goods
+
     def __str__(self):
         return 'Compartment {} is accommodating {} passengers and {} goods.'.format(
             self.__name,
@@ -218,15 +221,24 @@ class Train:
 
     def add_goods(self, goods_list):
         no_of_goods = 0
+        passenger_capacity = self.__passenger_capacity_per_compartment
         while not goods_list.is_empty():
             no_of_goods += goods_list.dequeue().get_quantity()
         while no_of_goods > 0:
             tail_compartment = self.__compartment_list.get_tail().get_data()
             passenger_available = tail_compartment.get_no_of_passengers()
-            goods_available = tail_compartment.get_no_of_goods()
-            remaining_space = (passenger_available // self.__passenger_goods_ratio) - goods_available
-            # TODO: check if we can accommodate any goods in the tail compartment
-            pass
+            if passenger_available:
+                available_space = (passenger_capacity - passenger_available) // self.__passenger_goods_ratio
+                tail_compartment.set_no_of_goods(available_space)
+                no_of_goods -= available_space
+            available_space = passenger_capacity // self.__passenger_goods_ratio
+            if no_of_goods < available_space:
+                available_space = no_of_goods
+            serial_number = int(tail_compartment.get_name()[-1])
+            compartment_name = self.__train_name[0] + str(serial_number + 1)
+            compartment = Compartment(compartment_name, 0, available_space)
+            self.__compartment_list.add(compartment)
+            no_of_goods -= available_space
 
     def __str__(self):
         return ('Train {} travels from {} to {} with a capacity of {} passenger per compartment and the passenger to '
@@ -240,4 +252,26 @@ class Train:
 
 
 if __name__ == '__main__':
-    pass
+    train1 = Train(
+        'Chalukya',
+        'Bangalore',
+        'Mumbai',
+        60,
+        5
+    )
+    train1.add_passenger_compartments(235)
+    goods1 = Goods('television', 26)
+    goods2 = Goods('microwave', 15)
+    goods3 = Goods('mixers', 20)
+    goods4 = Goods('sofaset', 5)
+    goods5 = Goods('chairs', 9)
+    goods6 = Goods('computertables', 10)
+    queue = Queue(6)
+    queue.enqueue(goods1)
+    queue.enqueue(goods2)
+    queue.enqueue(goods3)
+    queue.enqueue(goods4)
+    queue.enqueue(goods5)
+    queue.enqueue(goods6)
+    train1.add_goods(queue)
+    train1.get_compartment_list().display()
