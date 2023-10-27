@@ -27,6 +27,7 @@ your program by invoking the methods.
 """
 
 
+# Linked List Implementation
 class Node:
     def __init__(self, data):
         self.__data = data
