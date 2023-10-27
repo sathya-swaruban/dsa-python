@@ -1,4 +1,4 @@
-# lex_auth_0127717096857518081088
+# lex_auth_0127717089143439361097
 
 # Linked List Implementation
 class Node:
@@ -251,9 +251,23 @@ class Train:
         )
 
 
+class TrainService:
+    @staticmethod
+    def transfer_goods(train1, train2):
+        temp = train1.get_compartment_list().get_head()
+        while temp.get_next().get_data().get_no_of_goods() == 0:
+            temp = temp.get_next()
+        goods_start = temp.get_next()
+        temp.set_next(None)
+        train1_tail = train1.get_compartment_list().get_tail()
+        train2_head = train2.get_compartment_list().get_head()
+        train1_tail.set_next(train2_head.get_next())
+        train2_head.set_next(goods_start)
+
+
 if __name__ == '__main__':
-    train1 = Train('Chalukya', 'Bangalore', 'Mumbai', 60, 5)
-    train1.add_passenger_compartments(235)
+    train_a = Train('Chalukya', 'Bangalore', 'Mumbai', 60, 5)
+    train_a.add_passenger_compartments(230)
     goods1 = Goods('television', 26)
     goods2 = Goods('microwave', 15)
     goods3 = Goods('mixers', 20)
@@ -267,5 +281,9 @@ if __name__ == '__main__':
     queue.enqueue(goods4)
     queue.enqueue(goods5)
     queue.enqueue(goods6)
-    train1.add_goods(queue)
-    train1.get_compartment_list().display()
+    train_a.add_goods(queue)
+    train_a.get_compartment_list().display()
+    train_b = Train('Rajdhani', 'Mumbai', 'Chandigarh', 75, 5)
+    train_b.add_passenger_compartments(150)
+    TrainService.transfer_goods(train_a, train_b)
+    train_b.get_compartment_list().display()
