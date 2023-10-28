@@ -1,6 +1,15 @@
 # lex_auth_01275171967517491271
 """
-TODO: Problem Description goes here.
+In a sequence of characters, a letter means en-queue and an asterisk means de-queue.  Write a python function which
+accepts the given sequence and returns the string obtained by de-queuing.
+
+Example-01:
+    Input:  I*TS** A **BE***AUT**IF**UL** D**AY***
+    Output: ITS A BEAUTIFUL DAY
+
+Example-02:
+    Input:  E*NE**M*Y S***HI**P*S* O**N T***H*E W***AY**
+    Output: ENEMY SHIPS ON THE WAY
 """
 
 
@@ -46,9 +55,12 @@ class Queue:
 
 def create_seqeunce(message):
     result = ''
+    queue = Queue(len(message))
     for character in message:
-        if character != '*':
-            result += character
+        if character == '*':
+            result += queue.dequeue()
+        else:
+            queue.enqueue(character)
     return result
 
 
