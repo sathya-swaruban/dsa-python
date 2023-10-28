@@ -1,6 +1,10 @@
 # lex_auth_01275172167565312069
 """
-TODO: Problem Description goes here
+Write a python function which accepts a stack of integers, sorts it in ascending order and returns the sorted stack.
+
+Example:
+    Input:  Stack:top->bottom (9,3,56,6,2,7,4)
+    Output: Stack(2,3,4,6,7,9,56)
 """
 
 
