@@ -23,12 +23,15 @@ class Queue:
             print("Queue is empty!")
         else:
             data = self.__elements[self.__front]
-            self.__front += 1
+            for i in range(self.__rear):
+                self.__elements[i] = self.__elements[i + 1]
+            self.__rear -= 1
             return data
 
     def display(self):
         for index in range(self.__front, self.__rear + 1):
             print(self.__elements[index], end='<-')
+        print()
 
     def get_max_size(self):
         return self.__max_size
