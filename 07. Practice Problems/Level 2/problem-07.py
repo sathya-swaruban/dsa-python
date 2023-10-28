@@ -42,17 +42,22 @@ class Stack:
                 index -= 1
         print()
 
+    def peek(self):
+        return self.__elements[self.__top]
+
     def get_max_size(self):
         return self.__max_size
 
 
 def sort_stack(stack1):
-    temp = list()
+    temp_stack = Stack(stack1.get_max_size())
     while not stack1.is_empty():
-        temp.append(stack1.pop())
-    temp.sort(reverse=True)
-    for element in temp:
-        stack1.push(element)
+        element = stack1.pop()
+        while not temp_stack.is_empty() and element < temp_stack.peek():
+            stack1.push(temp_stack.pop())
+        temp_stack.push(element)
+    while not temp_stack.is_empty():
+        stack1.push(temp_stack.pop())
     return stack1
 
 
