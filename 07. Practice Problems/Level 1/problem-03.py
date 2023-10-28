@@ -12,7 +12,6 @@ Class Descriptions
         - __init__(name, account_balance)
         - get_name()
         - get_account_balance()
-        - get_account_balance()
         - __str__()
     b) Bank Class:
         - bank_name
