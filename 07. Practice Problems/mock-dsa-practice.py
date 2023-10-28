@@ -190,22 +190,29 @@ class Stack:
 def queue_ordering(input_queue, input_stack):
     output_queue = Queue(input_queue.get_max_size())
     while not input_stack.is_empty():
-        element = input_stack.pop()
-        if element == 1:
+        if input_stack.pop() == 1:
             input_queue.enqueue(input_queue.dequeue())
-        elif element == 2:
-            # TODO: Complete the code.
-            pass
+        else:
+            temp_queue = Queue(input_queue.get_max_size())
+            while not input_queue.is_empty():
+                data = input_queue.dequeue()
+                if input_queue.is_empty():
+                    input_queue.enqueue(data)
+                    break
+                temp_queue.enqueue(data)
+            while not temp_queue.is_empty():
+                input_queue.enqueue(temp_queue.dequeue())
+    while not input_queue.is_empty():
+        output_queue.enqueue(input_queue.dequeue())
     return output_queue
 
 
 if __name__ == '__main__':
-    stack = Stack(5)
-    stack.push(1)
-    stack.push(1)
-    stack.push(1)
-    stack.push(1)
-    stack.push(1)
+    stack = Stack(4)
+    stack.push(2)
+    stack.push(2)
+    stack.push(2)
+    stack.push(2)
     queue = Queue(5)
     queue.enqueue('C')
     queue.enqueue('A')
