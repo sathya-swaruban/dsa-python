@@ -1,0 +1,27 @@
+Algorithms: Bit Manipulation: https://www.youtube.com/watch?v=NLKQEOgBAnw&ab_channel=HackerRank
+    -   Binary (Positive)
+    -   Addition
+    -   Binary (Negative) in 2's complement form
+        -   Steps to find 2's complement of a positive number:
+                1.  Invert all bits of the positive number (1's complement)
+                2.  Add 1 to the 1's complement (2's complement)
+                Example:
+                    5   -   0000 0101
+                            1111 1010   (1's complement)
+                                    1 +
+                            ---------
+                    -5  -   1110 0000   (2's complement)
+                            ---------
+    -   Shifting:
+        -   Logical:
+            -   >>> right shift
+        -   Arithmetic:
+            -   << left shift
+            -   >> right shift
+    -   Masks:
+        -   & (and)
+        -   | (or)
+        -   ^ (xor)
+        -   Get i-th bit: (x & (1 << i)) != 0
+        -   Set i-th bit: x | (1 << i)
+        -   Clear i-th bit: x & (~ (1 << i))
